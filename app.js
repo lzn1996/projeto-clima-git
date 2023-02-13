@@ -66,7 +66,7 @@ navigator.geolocation.getCurrentPosition((position)=>{
  
 // Passo 3- Criar uma funçao que usa o metodo fetch para buscar uma api de clima, onde recebe o cityName (q é o valor do input, o useja, o que o usuario digitar, ex sao paulo)
 function getCityWeather(cityName){
-    weatherIcon.src = `/assets/loading-icon.svg`
+    weatherIcon.src = `./assets/loading-icon.svg`
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&lang=pt_br&appid=${api_key}`)  // fetch = busque por > link da api. then>((pega a resposta)) => e faz ela virar json = resposta.json.then>((pega o dado q veio) => e faz algo)
     .then((response) => response.json()).then((data) => displayWeather(data))
  }
@@ -85,7 +85,7 @@ function getCityWeather(cityName){
 // Passo 5 - Modificar o textContent das variáveis criadas acima para o valor vindo da desestruturaçao feita dos dados do json
         currentDate.textContent = formatDate(dt)
         cityName.textContent = name
-        weatherIcon.src = `/assets/${icon}.svg`
+        weatherIcon.src = `./assets/${icon}.svg`
         weatherDescription.textContent = description
         currentTemperature.textContent = `${Math.round(temp)}ºC`
         windSpeed.textContent = speed
