@@ -2,7 +2,8 @@
 
 //Interação
 const citySearchInput = document.querySelector("#city-search-input")
-const citySearchButton = document.querySelector("#city-search-button")
+// const citySearchButton = document.querySelector("#city-search-button")
+const form = document.querySelector('form')
 //Exibição
 const currentDate = document.querySelector("#current-date")
 const cityName = document.querySelector("#city-name")
@@ -18,10 +19,10 @@ const api_key = "c2a2ef8a0498948988aa791a6f383c09"
 
 
 // Passo 2- Adicionar evento de click (addeventlistener) na variavel q armazena o input que vai receber a cidade, e criar uma funçao anonima pra pegar o valor do input: adicionando uma proxima funçao q recebe como parametro do valor do input, criada logo depois, que vai pesquisar por esse valor atraves de uma API
-citySearchButton.addEventListener('click', () =>{
-     let cityName = citySearchInput.value 
-     getCityWeather(cityName)
-})
+// citySearchButton.addEventListener('click', () =>{
+//      let cityName = citySearchInput.value 
+//      getCityWeather(cityName)
+// })
  //https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=pt_br&appi=${6081e8071e88b1d5d97214a8be9141e6
 //https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
@@ -40,13 +41,20 @@ navigator.geolocation.getCurrentPosition((position)=>{
 
 )
 
-document.addEventListener('keypress', function(event) {
-    let cityName = citySearchInput.value
-    if (event.keyCode == 13)
-    {
-        getCityWeather(cityName);
-    }
-});
+// document.addEventListener('keypress', function(event) {
+//     let cityName = citySearchInput.value
+//     if (event.keyCode == 13)
+//     {
+//         getCityWeather(cityName);
+//     }
+// });
+
+form.addEventListener('submit', event => {
+    // Prevenir que a pagina recarregue
+    event.preventDefault();
+    // actual logic, e.g. validate the form
+    getCityWeather(citySearchInput.value);
+  });
 
 //https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=pt_br&appi=${6081e8071e88b1d5d97214a8be9141e6
 //https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
